@@ -57,23 +57,30 @@ namespace DisableSS
             }
             else
             {
-                // bring the existing instance to the foreground
-                Process[] ps = Process.GetProcesses(".");
-                foreach (Process p in ps) {
-                    if (p.ProcessName == "DisableSS" && p.MainWindowHandle.ToInt32() != 0) {
-                        if (IsIconic(p.MainWindowHandle))
-                            ShowWindow(p.MainWindowHandle, 1);                            
-                        else
-                        {
-                            
-                            //A little trick here to make it the utmost top window and then 
-                            //set it to not be the utmost top, so that it can be hidden again...
-                            GetWindowRect(p.MainWindowHandle, out RECT theRect);
-                            SetWindowPos(p.MainWindowHandle, -1, theRect.left, theRect.top, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
-                            SetWindowPos(p.MainWindowHandle, -2, theRect.left, theRect.top, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+                try
+                {
+                    // bring the existing instance to the foreground
+                    Process[] ps = Process.GetProcesses(".");
+                    foreach (Process p in ps) {
+                        if (p.ProcessName == "DisableSS" && p.MainWindowHandle.ToInt32() != 0) {
+                            if (IsIconic(p.MainWindowHandle))
+                                ShowWindow(p.MainWindowHandle, 1);                            
+                            else
+                            {
+                                //A little trick here to make it the utmost top window and then 
+                                //set it to not be the utmost top, so that it can be hidden again...
+                                GetWindowRect(p.MainWindowHandle, out RECT theRect);
+                                SetWindowPos(p.MainWindowHandle, -1, theRect.left, theRect.top, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+                                SetWindowPos(p.MainWindowHandle, -2, theRect.left, theRect.top, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+                            }
+                            break;                        
                         }
-                        break;                        
                     }
+                }
+                catch (Exception)
+                {
+                    // yikes
+                    throw;
                 }
             }
         }

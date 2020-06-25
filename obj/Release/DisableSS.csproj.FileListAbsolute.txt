@@ -1,0 +1,9 @@
+C:\Users\MarkFe\source\repos\DisableSS\bin\Release\DisableSS.exe
+C:\Users\MarkFe\source\repos\DisableSS\bin\Release\DisableSS.pdb
+C:\Users\MarkFe\source\repos\DisableSS\obj\Release\DisableSS.csprojAssemblyReference.cache
+C:\Users\MarkFe\source\repos\DisableSS\obj\Release\DisableSS.Form1.resources
+C:\Users\MarkFe\source\repos\DisableSS\obj\Release\DisableSS.Properties.Resources.resources
+C:\Users\MarkFe\source\repos\DisableSS\obj\Release\DisableSS.csproj.GenerateResource.cache
+C:\Users\MarkFe\source\repos\DisableSS\obj\Release\DisableSS.csproj.CoreCompileInputs.cache
+C:\Users\MarkFe\source\repos\DisableSS\obj\Release\DisableSS.exe
+C:\Users\MarkFe\source\repos\DisableSS\obj\Release\DisableSS.pdb
