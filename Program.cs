@@ -11,11 +11,22 @@ namespace DisableSS
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+        static void Main() {
+            if(mutex.WaitOne(TimeSpan.Zero, true)) {
+                try
+                {
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new Form1());
+                }
+                finally
+                {
+                    mutex.ReleaseMutex();
+                }
+            } else {
+                //MessageBox.Show("only one instance at a time");
+                //Make this app the front of the z-order
+            }
         }
     }
 }
